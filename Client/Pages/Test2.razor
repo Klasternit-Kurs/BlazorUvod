@@ -1,0 +1,30 @@
+﻿@page "/test2"
+
+<h3>@Txt</h3>
+@if (Prikazuj)
+{
+	<p><b>@Unos</b></p>
+}
+
+<button class="btn btn-primary" @onclick="Klik">
+	Test dugme
+</button>
+
+<p><input @bind="Unos" @bind:event="oninput"/></p>
+<p><input type="checkbox" @bind="Prikazuj" @bind:event="onchange"  />Prikazi</p>
+
+@code
+{
+	public string Txt { get; set; } = "Klik!";
+	public string Unos { get; set; }
+	public bool Prikazuj { get; set; }
+
+	public void Klik()
+	{
+		if (Txt == "Klik!")
+		{
+			Txt = "Klik!?!?!?";
+		} else
+			Txt = "Klik!";
+	}
+}

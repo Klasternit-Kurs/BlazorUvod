@@ -1,0 +1,65 @@
+﻿@page "/test"
+
+<h3>Test</h3>
+
+<p>Trenutno vreme je: <b>@DateTime.Now</b></p>
+<p>Za nedelju dana bice: <b>@(DateTime.Now.AddDays(7))</b></p>
+
+@{ 
+	int x = 7;
+	x *= 2;
+}
+
+
+<p>X je: @x</p>
+
+@{ 
+	x *= 10;
+}
+
+<p>X je sada: @x</p>
+
+<p>Test je: @NekiBroj</p>
+
+
+@{ FooBar(); }
+
+<p>Test je sada: @NekiBroj</p>
+
+@{Templejting();}
+
+@{
+	void Templejting()
+	{
+		if (NekiBroj > 0)
+		{ 
+			<p>HTML iz C# lol</p>
+		}
+	}
+}
+
+@if (NekiBroj > 0)
+{
+	<p>Veci je od nula :D</p>
+} else
+{
+	<p>Nije veci od nula :D</p>
+}
+
+@while (NekiBroj < 10)
+{
+	<p>@(NekiBroj++)</p>
+}
+
+
+@code
+{
+	public int NekiBroj { get; set; }
+
+	public void FooBar()
+	{
+		NekiBroj += 1;
+		
+	}
+}
+
