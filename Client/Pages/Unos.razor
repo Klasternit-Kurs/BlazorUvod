@@ -1,0 +1,32 @@
+﻿@page "/lista"
+
+<h3>Unos</h3>
+
+<ul>
+	@foreach (TestKlasa t in lst)
+	{
+		<li>@t.Br -- @t.Txt   <input type="checkbox" @bind="t.Brisanje" /></li>
+	}
+</ul>
+<p>
+	Broj: <input @bind="brr" />
+	Tekst: <input @bind="un"/>
+	<button class="btn btn-primary" @onclick="unesi" >Dugme</button>
+</p>
+<button class="btn btn-danger" @onclick="brisanje">!!!</button>
+<b>Trenutno: @un</b>
+
+@code
+{
+	public List<TestKlasa> lst = new List<TestKlasa>();
+	public string un { get; set; }
+	public int brr { get; set; }
+
+	public void brisanje() => 
+		lst.RemoveAll(asdf => asdf.Brisanje);
+	
+	public void unesi()
+	{
+		lst.Add(new TestKlasa(brr, un));
+	}
+}
